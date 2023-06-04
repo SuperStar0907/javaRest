@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "63ed4e59-683c-4bc5-86aa-5f35b9798d02",
+		"name": "Spotify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27643127"
+	},
+	"item": [
+		{
+			"name": "Spotify",
+			"item": [
+				{
+					"name": "for token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "ac246ae97c81461388ae416fbe836c2c",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "a57cb679ba6445b2af762b0226b35ae7",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://accounts.spotify.com/api/token",
+							"protocol": "https",
+							"host": [
+								"accounts",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"api",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Spotify get artist info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "BQCzyS5ahXvyPEHrG-3cq3707WRsEgyFqF0kRmywHisO9GxbClT_jiJnxGnCkBCXNopwymSWkmcPBVKJoa4ELSdRjUxg73MEo1Y7CFbXVxm-CeQRjSg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/6M2wZ9GZgrQXHCFfjv46we",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"6M2wZ9GZgrQXHCFfjv46we"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Elastic Official",
+			"item": [
+				{
+					"name": "Elastic official all search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/artists/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"artists",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "particular search in elasticsearch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": {\n    \"term\": {\n      \"_id\": \"06HL4z0CvFAxyc27GXpf02\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/artists/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"artists",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "genre search in elastic",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": {\n    \"match\": {\n      \"genres\": \"pop\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/artists/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"artists",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all elasticsearch indices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/_cat/indices?v",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"indices"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "App API",
+			"item": [
+				{
+					"name": "ElasticSearch",
+					"item": [
+						{
+							"name": "Artist Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/elastic/7vk5e3vY1uw9plTHJAMwjN",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"elastic",
+										"7vk5e3vY1uw9plTHJAMwjN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "genre to artist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/findArtistByGenre/elastic/pop",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"findArtistByGenre",
+										"elastic",
+										"pop"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MondoDB",
+					"item": [
+						{
+							"name": "Artist Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/mongodb/7vk5e3vY1uw9plTHJAMwjN",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"mongodb",
+										"7vk5e3vY1uw9plTHJAMwjN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "genre to artist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/findArtistByGenre/mongodb/pop",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"findArtistByGenre",
+										"mongodb",
+										"pop"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Save artist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/storeArtist/7vk5e3vY1uw9plTHJAMwjN",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"storeArtist",
+								"7vk5e3vY1uw9plTHJAMwjN"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
